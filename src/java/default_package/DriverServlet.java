@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/InputServlet")
-public class InputServlet extends HttpServlet {
+public class DriverServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private String input;
@@ -22,8 +22,7 @@ public class InputServlet extends HttpServlet {
     /**
      * Default constructor.
      */
-
-    public InputServlet() {
+    public DriverServlet() {
         // TODO Auto-generated constructor stub
     }
 
@@ -43,7 +42,7 @@ public class InputServlet extends HttpServlet {
         try {
             inputText.readAndStore(search, lineStorage);
 
-            System.out.println("search line: " + search);
+            // System.out.println("search line: " + search);
         } catch (IOException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -63,7 +62,7 @@ public class InputServlet extends HttpServlet {
 
             results.add(alphabetizer.getLine(i));
             SQLCreate.insertRecords(i, alphabetizer.getLine(i), lineStorage.getLine(i));
-            System.out.println("alpha:" + alphabetizer.getLine(i));
+            //System.out.println("alpha:" + alphabetizer.getLine(i));
         }
 
         bean.setInput(results);
