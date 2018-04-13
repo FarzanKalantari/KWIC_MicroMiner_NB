@@ -39,9 +39,10 @@ public class ClearDBServlet extends HttpServlet {
                     bean.setInput(null);
                     bean.setResults(null);
                 }
-                
-		SQLCreate.connect();
-		SQLCreate.removeAllRecords();
+                SQLCreate sqlCreate = SQLCreate.instance();
+
+		sqlCreate.connect();
+		sqlCreate.removeAllRecords();
 
                 if(bean != null)
                     request.getSession().setAttribute("bean", bean);

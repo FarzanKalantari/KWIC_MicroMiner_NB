@@ -14,17 +14,18 @@ public class MinerSearch {
     public ArrayList<String> getSortedLines() throws SQLException {
 
         Statement stmt = null;
-        Connection con = SQLCreate.connect();
+        SQLCreate sqlCreate = SQLCreate.instance();
+        Connection con = sqlCreate.connect();
         String sql = "Select SortedLine from KWICdata";
-
         ArrayList<String> sortedLines = new ArrayList<String>();
+
         try {
             stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
             System.out.println();
 
             while (rs.next()) {
-                System.out.println("result sorted statement: " + rs.getString("SortedLine"));
+                //System.out.println("result sorted statement: " + rs.getString("SortedLine"));
                 sortedLines.add(rs.getString("SortedLine"));
             }
 
@@ -40,19 +41,17 @@ public class MinerSearch {
     //gets input lines from database and puts them an arraylist
     public ArrayList<String> getInputLines() throws SQLException {
         ArrayList<String> inputLines = new ArrayList<String>();
-
         Statement stmt = null;
-        Connection con = SQLCreate.connect();
+        SQLCreate sqlCreate = SQLCreate.instance();
+        Connection con = sqlCreate.connect();
         String sql = "Select InputLine from KWICdata where InputLine IS NOT NULL";
 
         try {
             stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery(sql);
-            System.out.println();
-
             while (rs.next()) {
                 inputLines.add(rs.getString("InputLine"));
-                System.out.println("result input statement: " + rs.getString("InputLine"));
+                //System.out.println("result input statement: " + rs.getString("InputLine"));
             }
 
         } catch (SQLException e) {
@@ -69,7 +68,6 @@ public class MinerSearch {
         ArrayList<String> sortedLines = getSortedLines();
         ArrayList<String> inputLines = getInputLines();
         ArrayList<String> outputLines = new ArrayList<String>();
-//		System.out.println();
 
         for (int i = 0; i < sortedLines.size(); i++) {
             //checks if sorted line contains a combination of keyword input
@@ -86,10 +84,9 @@ public class MinerSearch {
                 }
             }
         }
-		System.out.println();
-		for(int i = 0; i < outputLines.size(); i++) {
-			System.out.println("output from keywords: " + outputLines.get(i));
-		}
+//        for (int i = 0; i < outputLines.size(); i++) {
+//            System.out.println("output from keywords: " + outputLines.get(i));
+//        }
         return outputLines;
     }
 

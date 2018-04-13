@@ -36,6 +36,7 @@ public class DriverServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         String search = request.getParameter("input");
         ArrayList<String> results = new ArrayList<String>();
+        SQLCreate sqlCreate = SQLCreate.instance();
 
         InputText inputText = new InputText();
         StorageI lineStorage = new LineStorage();
@@ -64,7 +65,7 @@ public class DriverServlet extends HttpServlet {
         for (int i = 0; i < alphabetizer.getLineCount(); i++) {
 
             results.add(alphabetizer.getLine(i));
-            SQLCreate.insertRecords(i, alphabetizer.getLine(i), lineStorage.getLine(i));
+            sqlCreate.insertRecords(i, alphabetizer.getLine(i), lineStorage.getLine(i));
             //System.out.println("alpha:" + alphabetizer.getLine(i));
         }
 
