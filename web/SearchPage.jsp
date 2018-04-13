@@ -41,9 +41,9 @@
         <%-- Textarea for database input --%>
         <form action="${pageContext.request.contextPath}/InputServlet" method="post">
             <textarea type="text" placeholder="Input" name="input" rows="15" cols="150"><% if (input != null)
-for (int i = 0; i < input.size(); i++) {%>
-<%=input.get(i)%>
-<% }%></textarea>
+                    for (int i = 0; i < input.size(); i++) {%>
+                <%=input.get(i)%>
+                <% }%></textarea>
             <br>
             <input type="submit" name="submit" value="Submit Input"/>
         </form>
@@ -54,9 +54,9 @@ for (int i = 0; i < input.size(); i++) {%>
             <input type="text" name="search" placeholder="Search" value=<%=search%>>
             <input type="submit" name="submit" value="Submit"/>
             <br><textarea name="output" rows="15" cols="150"><% if (results != null)
-for (int i = 0; i < results.size(); i++) {%>     
-<%=results.get(i)%>
-<% }%></textarea>
+                    for (int i = 0; i < results.size(); i++) {%>     
+                <%=results.get(i)%>
+                <% }%></textarea>
         </form>
 
         <%-- Clear database button --%>
@@ -64,4 +64,10 @@ for (int i = 0; i < results.size(); i++) {%>
             <input type="submit" name="clearDB" value="Clear Database"/>
         </form>
     </body>
+    <%--Here's the original line 47 if bean doesn't work--%>
+    <%--
+        <% if(output != null) for(int i = 0; i < output.size(); i++) { %>     
+        <%=output.get(i) %>
+        <% } %>
+    --%>
 </html>
