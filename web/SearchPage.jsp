@@ -39,17 +39,11 @@
         %>
 
         <%-- Textarea for database input --%>
-        <form action="${pageContext.request.contextPath}/InputServlet" method="post">
+        <form action="${pageContext.request.contextPath}/DriverServlet" method="post">
             <textarea type="text" placeholder="Input" name="input" rows="15" cols="150"><% if (input != null)
-<<<<<<< HEAD
 for (int i = 0; i < input.size(); i++) {%>
 <%=input.get(i)%>
 <% }%></textarea>
-=======
-                        for (int i = 0; i < input.size(); i++) {%>
-                <%=input.get(i)%>
-                <% }%></textarea>
->>>>>>> parent of ac38742... renamed InputServlet to DriverServlet. removed old classes
             <br>
             <input type="submit" name="submit" value="Submit Input"/>
         </form>
@@ -60,15 +54,9 @@ for (int i = 0; i < input.size(); i++) {%>
             <input type="text" name="search" placeholder="Search" value=<%=search%>>
             <input type="submit" name="submit" value="Submit"/>
             <br><textarea name="output" rows="15" cols="150"><% if (results != null)
-<<<<<<< HEAD
 for (int i = 0; i < results.size(); i++) {%>     
 <%=results.get(i)%>
 <% }%></textarea>
-=======
-        for (int i = 0; i < results.size(); i++) {%>     
-            <%=results.get(i)%>
-            <% }%></textarea>
->>>>>>> parent of ac38742... renamed InputServlet to DriverServlet. removed old classes
         </form>
 
         <%-- Clear database button --%>

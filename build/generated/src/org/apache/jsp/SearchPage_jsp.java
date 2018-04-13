@@ -86,15 +86,15 @@ public final class SearchPage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("        <form action=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("/InputServlet\" method=\"post\">\r\n");
+      out.write("/DriverServlet\" method=\"post\">\r\n");
       out.write("            <textarea type=\"text\" placeholder=\"Input\" name=\"input\" rows=\"15\" cols=\"150\">");
  if (input != null)
-                        for (int i = 0; i < input.size(); i++) {
-      out.write("\r\n");
-      out.write("                ");
+for (int i = 0; i < input.size(); i++) {
+      out.write('\r');
+      out.write('\n');
       out.print(input.get(i));
-      out.write("\r\n");
-      out.write("                ");
+      out.write('\r');
+      out.write('\n');
  }
       out.write("</textarea>\r\n");
       out.write("            <br>\r\n");
@@ -113,12 +113,11 @@ public final class SearchPage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <input type=\"submit\" name=\"submit\" value=\"Submit\"/>\r\n");
       out.write("            <br><textarea name=\"output\" rows=\"15\" cols=\"150\">");
  if (results != null)
-        for (int i = 0; i < results.size(); i++) {
+for (int i = 0; i < results.size(); i++) {
       out.write("     \r\n");
-      out.write("            ");
       out.print(results.get(i));
-      out.write("\r\n");
-      out.write("            ");
+      out.write('\r');
+      out.write('\n');
  }
       out.write("</textarea>\r\n");
       out.write("        </form>\r\n");
@@ -131,10 +130,6 @@ public final class SearchPage_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            <input type=\"submit\" name=\"clearDB\" value=\"Clear Database\"/>\r\n");
       out.write("        </form>\r\n");
       out.write("    </body>\r\n");
-      out.write("    ");
-      out.write("\r\n");
-      out.write("    ");
-      out.write("\r\n");
       out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){

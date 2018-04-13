@@ -2,6 +2,7 @@ package default_package;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * CircularShift: Performs circular word shift to the right, repeating
@@ -18,6 +19,7 @@ public class CircularShift implements StorageI{
 	String shiftedDescriptor[];
 	String[] descriptor;
 	String shiftedSentence;
+        String sentence;
 
 	public CircularShift() {
 		String noiseWords[] = { "a", "an", "the", "and", "or", "of", "to", "be", "is", "in", "out",     "by", "as", "at", "off" };
@@ -31,7 +33,20 @@ public class CircularShift implements StorageI{
 
 		for(int i = 0; i < lineStorage.getLineCount(); i++){
 			//stores input lines into words
-			words = lineStorage.getLine(i).split(" ");
+                        words = lineStorage.getLine(i).split("\\s+");
+
+//                        sentence = lineStorage.getLine(i).replaceAll("\t", " ");
+//                        System.out.println("sentence: " + sentence);
+//                        words = sentence.split(" ");
+//                        
+//                        for(int k = 0; k < words.length; k++){
+//                            words[k].trim();
+//                        }
+//                        List<String> list = new ArrayList<String>(Arrays.asList(words));
+//                        list.removeAll(Arrays.asList(" "));
+//                        System.out.println("list: "+ list);			
+//                        words = list.toArray(words);
+//                        words = lineStorage.getLine(i).split(" ");
 
 			//takes last entry in string array to get url
 			if(words[words.length-1].contains("http:")) {
@@ -40,7 +55,7 @@ public class CircularShift implements StorageI{
 			else {
 				System.out.println("No URL");
 			}
-
+//System.out.println("words: " + Arrays.asList(words));
 			//cuts off url to just leave descriptor, if there is a url
 			if(!url.equals("")) {
 				descriptor = Arrays.copyOf(words, words.length-1);
@@ -48,6 +63,8 @@ public class CircularShift implements StorageI{
 			else {
 				descriptor = words;
 			}
+                        System.out.println("descriptor: " + Arrays.asList(descriptor) + " url: "+ url);
+
 			shiftedDescriptor = new String[descriptor.length];
 
 			//loop through how many words on current line to produce shift

@@ -29,6 +29,12 @@ public class InputText {
                         // Skip empty lines
                         if (!"".equals(line)) {
                                 // Add line to the Line Storage
+//                                 System.out.println("line before s\\: " + line);
+//                                line.split("\\s+");
+//                                System.out.println("line after s\\: " + line);
+//                                line = String.join(" ",line);
+//                                System.out.println("line after join: " + line);
+
                                 lineStorage.setLine(lineCounter, line);
 
                                 lineCounter++;

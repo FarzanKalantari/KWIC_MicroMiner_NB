@@ -13,8 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/InputServlet")
-public class InputServlet extends HttpServlet {
+@WebServlet("/DriverServlet")
+public class DriverServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private String input;
@@ -22,8 +22,7 @@ public class InputServlet extends HttpServlet {
     /**
      * Default constructor.
      */
-
-    public InputServlet() {
+    public DriverServlet() {
         // TODO Auto-generated constructor stub
     }
 
@@ -43,7 +42,7 @@ public class InputServlet extends HttpServlet {
         try {
             inputText.readAndStore(search, lineStorage);
 
-            System.out.println("search line: " + search);
+            // System.out.println("search line: " + search);
         } catch (IOException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -58,12 +57,15 @@ public class InputServlet extends HttpServlet {
         ((Alphabetizer) alphabetizer).alpha(circularShift);
         //SQLCreate.connect();
 
-        System.out.println("alpha line count: " + alphabetizer.getLineCount());
+        //   System.out.println("alpha line count: " + alphabetizer.getLineCount());
+        for (int i = 0; i < lineStorage.getLineCount(); i++) {
+            lineStorage.setLine(i, lineStorage.getLine(i).replaceAll("\t", " "));
+        }
         for (int i = 0; i < alphabetizer.getLineCount(); i++) {
 
             results.add(alphabetizer.getLine(i));
             SQLCreate.insertRecords(i, alphabetizer.getLine(i), lineStorage.getLine(i));
-            System.out.println("alpha:" + alphabetizer.getLine(i));
+            //System.out.println("alpha:" + alphabetizer.getLine(i));
         }
 
         bean.setInput(results);
