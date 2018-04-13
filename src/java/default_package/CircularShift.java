@@ -34,20 +34,6 @@ public class CircularShift implements StorageI{
 		for(int i = 0; i < lineStorage.getLineCount(); i++){
 			//stores input lines into words
                         words = lineStorage.getLine(i).split("\\s+");
-
-//                        sentence = lineStorage.getLine(i).replaceAll("\t", " ");
-//                        System.out.println("sentence: " + sentence);
-//                        words = sentence.split(" ");
-//                        
-//                        for(int k = 0; k < words.length; k++){
-//                            words[k].trim();
-//                        }
-//                        List<String> list = new ArrayList<String>(Arrays.asList(words));
-//                        list.removeAll(Arrays.asList(" "));
-//                        System.out.println("list: "+ list);			
-//                        words = list.toArray(words);
-//                        words = lineStorage.getLine(i).split(" ");
-
 			//takes last entry in string array to get url
 			if(words[words.length-1].contains("http:")) {
 				url = words[words.length-1];
@@ -55,7 +41,6 @@ public class CircularShift implements StorageI{
 			else {
 				System.out.println("No URL");
 			}
-//System.out.println("words: " + Arrays.asList(words));
 			//cuts off url to just leave descriptor, if there is a url
 			if(!url.equals("")) {
 				descriptor = Arrays.copyOf(words, words.length-1);

@@ -1,7 +1,5 @@
 package default_package;
 
-
-
 import com.sql.db.SQLCreate;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -23,54 +21,58 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/SearchServlet")
 public class SearchServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+
+    private static final long serialVersionUID = 1L;
 
     /**
-     * Default constructor. 
+     * Default constructor.
      */
-	
     public SearchServlet() {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+     * response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-                String search = request.getParameter("search");
-                Bean bean = (Bean) request.getSession().getAttribute("bean");
-                
+        String search = request.getParameter("search");
+        Bean bean = (Bean) request.getSession().getAttribute("bean");
+        if (bean == null) {
+            bean = new Bean();
+        }
 
-                long startTime = System.currentTimeMillis();
-		MinerSearch miner = new MinerSearch();
-		ArrayList<String> results = null;
-            try {
-                results = miner.getOutputFromKeywords(search);
-            } catch (SQLException ex) {
-                Logger.getLogger(SearchServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                if(bean != null)
-                    bean.setResults(results);
-                
-                long endTime = System.currentTimeMillis();
-		System.out.println("\ntime to run prog: " + (endTime-startTime) + " milliseconds");
-                                
-                //update beans and refresh page
-                if(bean != null)
-                    request.getSession().setAttribute("bean", bean);
-                request.setAttribute("output", results);
-                request.setAttribute("search", search);
-                request.getRequestDispatcher("SearchPage.jsp").forward(request, response);
-	}
+        long startTime = System.currentTimeMillis();
+        MinerSearch miner = new MinerSearch();
+        ArrayList<String> results = null;
+        try {
+            results = miner.getOutputFromKeywords(search);
+        } catch (SQLException ex) {
+            Logger.getLogger(SearchServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (bean != null) {
+            bean.setResults(results);
+        }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+        long endTime = System.currentTimeMillis();
+        System.out.println("\ntime to run prog: " + (endTime - startTime) + " milliseconds");
+
+        //update beans and refresh page
+        if (bean != null) {
+            request.getSession().setAttribute("bean", bean);
+        }
+        request.setAttribute("output", results);
+        request.setAttribute("search", search);
+        request.getRequestDispatcher("SearchPage.jsp").forward(request, response);
+    }
+
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+     * response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doGet(request, response);
+    }
 
 }
