@@ -1,11 +1,9 @@
 package default_package;
 
-import com.sql.db.SQLCreate;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -52,6 +50,7 @@ public class SearchServlet extends HttpServlet {
             Logger.getLogger(SearchServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (bean != null) {
+            bean.setInput(null);
             bean.setResults(results);
         }
 

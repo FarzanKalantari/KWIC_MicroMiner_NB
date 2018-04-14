@@ -10,14 +10,15 @@ import com.sql.db.SQLCreate;
 
 public class MinerSearch {
 
+    private SQLCreate sqlCreate = SQLCreate.instance();
+
     //gets sorted lines from database and puts them an arraylist
     public ArrayList<String> getSortedLines() throws SQLException {
 
         Statement stmt = null;
-        SQLCreate sqlCreate = SQLCreate.instance();
         Connection con = sqlCreate.connect();
         String sql = "Select SortedLine from KWICdata";
-        ArrayList<String> sortedLines = new ArrayList<String>();
+        ArrayList<String> sortedLines = new ArrayList<>();
 
         try {
             stmt = con.createStatement();
@@ -42,7 +43,6 @@ public class MinerSearch {
     public ArrayList<String> getInputLines() throws SQLException {
         ArrayList<String> inputLines = new ArrayList<String>();
         Statement stmt = null;
-        SQLCreate sqlCreate = SQLCreate.instance();
         Connection con = sqlCreate.connect();
         String sql = "Select InputLine from KWICdata where InputLine IS NOT NULL";
 

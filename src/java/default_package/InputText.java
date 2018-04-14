@@ -1,7 +1,5 @@
 package default_package;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 
 /**
@@ -9,41 +7,29 @@ import java.io.IOException;
  */
 public class InputText {
 
-        /**
-         * Stores lines to the Line Storage object
-         */
+    /**
+     * Stores lines to the Line Storage object
+     */
+    public LineStorage readAndStore(String text, StorageI lineStorage) throws IOException {
+        int lineCounter = 0;
+        String line;
 
+        String[] lines = text.split("\\r?\\n");
 
-        public LineStorage readAndStore(String text, StorageI lineStorage) throws IOException {
+        for (int i = 0; i < lines.length; i++) {
+            if ((line = lines[i]) != null) {
+                // Skip empty lines
+                if (!"".equals(line)) {
+                    // Add line to the Line Storage
+                    lineStorage.setLine(lineCounter, line);
 
-                // Count line
-                int lineCounter = 0;
-
-                // Line
-                String line;
-
-                String[] lines = text.split("\\r?\\n");
-                
-                for(int i = 0; i < lines.length; i++){
-                    if ((line = lines[i]) != null) {
-                        // Skip empty lines
-                        if (!"".equals(line)) {
-                                // Add line to the Line Storage
-//                                 System.out.println("line before s\\: " + line);
-//                                line.split("\\s+");
-//                                System.out.println("line after s\\: " + line);
-//                                line = String.join(" ",line);
-//                                System.out.println("line after join: " + line);
-
-                                lineStorage.setLine(lineCounter, line);
-
-                                lineCounter++;
-                        }
-                    }
+                    lineCounter++;
                 }
-
-                // Return line storage
-                return (LineStorage) lineStorage;
+            }
         }
+
+        // Return line storage
+        return (LineStorage) lineStorage;
+    }
 
 }
