@@ -50,6 +50,7 @@ public class SearchServlet extends HttpServlet {
             Logger.getLogger(SearchServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (bean != null) {
+            //set input to null if you don't want to see alphabetized output in top text area
             bean.setInput(null);
             bean.setResults(results);
         }

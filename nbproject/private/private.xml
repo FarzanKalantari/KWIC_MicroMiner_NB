@@ -3,11 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ac3_o/Documents/NetBeansProjects/KWIC_MicroMiner/src/java/default_package/CircularShift.java</file>
-            <file>file:/C:/Users/ac3_o/Documents/NetBeansProjects/KWIC_MicroMiner/src/java/default_package/InputServlet.java</file>
-            <file>file:/C:/Users/ac3_o/Documents/NetBeansProjects/KWIC_MicroMiner/web/SearchPage.jsp</file>
-            <file>file:/C:/Users/ac3_o/Documents/NetBeansProjects/KWIC_MicroMiner/src/java/com/sql/db/SQLCreate.java</file>
-            <file>file:/C:/Users/ac3_o/Documents/NetBeansProjects/KWIC_MicroMiner/src/java/default_package/InputText.java</file>
+            <file>file:/C:/Users/ac3_o/Documents/NetBeansProjects/KWIC_MicroMiner_NB/src/java/default_package/Alphabetizer.java</file>
+            <file>file:/C:/Users/ac3_o/Documents/NetBeansProjects/KWIC_MicroMiner_NB/src/java/default_package/SearchServlet.java</file>
+            <file>file:/C:/Users/ac3_o/Documents/NetBeansProjects/KWIC_MicroMiner_NB/src/java/default_package/ClearDBServlet.java</file>
+            <file>file:/C:/Users/ac3_o/Documents/NetBeansProjects/KWIC_MicroMiner_NB/src/java/default_package/MinerSearch.java</file>
+            <file>file:/C:/Users/ac3_o/Documents/NetBeansProjects/KWIC_MicroMiner_NB/src/java/com/sql/db/SQLCreate.java</file>
+            <file>file:/C:/Users/ac3_o/Documents/NetBeansProjects/KWIC_MicroMiner_NB/src/java/default_package/Bean.java</file>
+            <file>file:/C:/Users/ac3_o/Documents/NetBeansProjects/KWIC_MicroMiner_NB/src/java/default_package/DriverServlet.java</file>
+            <file>file:/C:/Users/ac3_o/Documents/NetBeansProjects/KWIC_MicroMiner_NB/src/java/default_package/InputText.java</file>
         </group>
     </open-files>
 </project-private>
